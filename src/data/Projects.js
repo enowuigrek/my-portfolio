@@ -18,6 +18,8 @@ export const projects = [
         description: "Aplikacja webowa dla mieszkańców Częstochowy do odpowiadania na pytania rozmieszczone w przestrzeni miejskiej. Po zeskanowaniu QR użytkownik odpowiada i otrzymuje ciekawostkę.",
         tech: ["React", "Firebase", "JavaScript"],
         github: "https://github.com/enowuigrek/Miejska-Ankieta",
+        live: "https://miejska-ankieta.czest.pl",
+        demo: "https://miejska-ankieta.czest.pl/pomidorowa", // Dodaj przykładowe pytanie
         image: "/api/placeholder/400/250",
         highlights: [
             "Lokalny twist z QR kodami w mieście",
@@ -41,15 +43,16 @@ export const projects = [
     {
         id: 4,
         title: "Uknuta Magia",
-        description: "Komercyjna strona książki dla dzieci. Można przeczytać opis, poznać autora, kupić książkę... a nawet porozmawiać z jej bohaterami przez AI chat.",
-        tech: ["React", "Figma", "OpenAI API", "Payhip"],
+        description: "Komercyjna strona książki dla dzieci. Można przeczytać opis, poznać autora, kupić książkę... a" +
+            " w przyszłości porozmawiać z jej bohaterami przez AI chat.",
+        tech: ["React", "Figma", "Supabase"],
         github: "https://github.com/enowuigrek/uknuta-magia",
         live: "https://uknutamagia.pl",
         image: "/api/placeholder/400/250",
         highlights: [
             "Pełny projekt komercyjny",
             "Design zaplanowany od zera w Figmie",
-            "Interaktywny chat z postaciami z książki"
+            "W realizacji - Interaktywny chat z postaciami z książki"
         ]
     }
 ]

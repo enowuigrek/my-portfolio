@@ -2,7 +2,7 @@ import {
     Zap, Code, Palette, Wind, Brush,
     GitBranch, Figma, Monitor, Flame, Package,
     Route, RotateCcw, Triangle, Paintbrush, Search, Archive,
-    Bot, Brain, MessageSquare, Sparkles, Link, Database,
+    Bot, Brain, Braces, MessageSquare, Sparkles, Link, Database,
     Puzzle, Users, Target, BookOpen, Eye, Settings
 } from 'lucide-react'
 
@@ -13,9 +13,9 @@ export const skillCategories = [
         description: "Technologie które używam codziennie",
         color: "blue",
         skills: [
-            { name: "JavaScript ES6+", icon: Zap, experience: "Codziennie" },
+            { name: "JavaScript ES6+", icon: Braces, experience: "Codziennie" },
             { name: "React", icon: Code, experience: "2+ lata" },
-            { name: "HTML5", icon: Monitor, experience: "Expert" },
+            { name: "HTML5", icon: Code, experience: "Zaawansowany" },
             { name: "CSS3", icon: Palette, experience: "Zaawansowany" },
             { name: "Tailwind CSS", icon: Wind, experience: "Preferowane" },
             { name: "Sass/SCSS", icon: Brush, experience: "Komfortowo" }
@@ -30,7 +30,7 @@ export const skillCategories = [
             { name: "Git & GitHub", icon: GitBranch, experience: "Codziennie" },
             { name: "Vite", icon: Zap, experience: "Preferowane" },
             { name: "Figma", icon: Figma, experience: "Design" },
-            { name: "VS Code", icon: Monitor, experience: "IDE" },
+            { name: "VS Code / WebStorm", icon: Monitor, experience: "IDE" },
             { name: "Firebase", icon: Flame, experience: "Backend" },
             { name: "Webpack", icon: Package, experience: "Podstawy" }
         ]
@@ -55,7 +55,7 @@ export const skillCategories = [
         description: "Eksperymentuję i implementuję w projektach",
         color: "orange",
         skills: [
-            { name: "OpenAI API", icon: Bot, experience: "4 projekty" },
+            { name: "OpenAI API", icon: Bot, experience: "Eksperymentuje" },
             { name: "AI Agents", icon: Brain, experience: "Własne boty" },
             { name: "Prompt Engineering", icon: MessageSquare, experience: "Zaawansowany" },
             { name: "Claude API", icon: Sparkles, experience: "Integracje" },

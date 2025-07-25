@@ -11,10 +11,6 @@ function Footer() {
                         {/* About */}
                         <div className="md:col-span-2">
                             <h3 className="text-xl font-bold mb-4">Łukasz Nowak</h3>
-                            <p className="text-gray-300 mb-4 leading-relaxed">
-                                Frontend Developer z 10+ letnim doświadczeniem biznesowym.
-                                Tworzę nowoczesne aplikacje webowe w React i eksperymentuję z AI.
-                            </p>
                             <div className="flex space-x-4">
                                 <a
                                     href="https://github.com/enowuigrek"
@@ -103,7 +99,8 @@ function Footer() {
                     {/* Bottom Bar */}
                     <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
                         <div className="text-gray-400 text-sm">
-                            © {currentYear} Łukasz Nowak. Wszystkie prawa zastrzeżone.
+                            © {currentYear} Łukasz Nowak aka enowuigrek
+                            . Wszystkie prawa zastrzeżone.
                         </div>
                         <div className="text-gray-400 text-sm mt-4 md:mt-0">
                             Zbudowane z ❤️ przy użyciu React + Tailwind CSS

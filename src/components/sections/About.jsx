@@ -1,9 +1,16 @@
 import { useState } from 'react'
 import { Eye, X, Brain, Lightbulb, Target, Users, Settings, ArrowRight, Zap, Users2, TrendingUp } from 'lucide-react'
 import Modal from '../ui/Modal'
+import { useScrollAnimation } from '../../utils/scrollAnimations'
 
 function About() {
     const [showStrengthsModal, setShowStrengthsModal] = useState(false)
+
+    // Scroll animations
+    const [titleRef, titleVisible] = useScrollAnimation()
+    const [contentRef, contentVisible] = useScrollAnimation()
+    const [strengthsRef, strengthsVisible] = useScrollAnimation()
+    const [valueRef, valueVisible] = useScrollAnimation()
 
     const strengthsData = [
         {
@@ -83,11 +90,17 @@ function About() {
         <section id="about" className="py-20 bg-white">
             <div className="container mx-auto px-4">
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+                    <h2
+                        ref={titleRef}
+                        className={`text-4xl font-bold text-center text-gray-800 mb-12 fade-in-up ${titleVisible ? 'visible' : ''}`}
+                    >
                         O mnie
                     </h2>
 
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div
+                        ref={contentRef}
+                        className={`grid lg:grid-cols-2 gap-12 items-center fade-in-up ${contentVisible ? 'visible' : ''}`}
+                    >
                         <div>
                             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                                 Frontend Developer & Problem Solver
@@ -106,7 +119,10 @@ function About() {
                             </p>
 
                             {/* CliftonStrengths Section */}
-                            <div className="mb-8">
+                            <div
+                                ref={strengthsRef}
+                                className={`mb-8 fade-in-left ${strengthsVisible ? 'visible' : ''}`}
+                            >
                                 <div className="flex items-center justify-between mb-4">
                                     <h4 className="text-lg font-semibold text-gray-800">
                                         Moje naturalne talenty
@@ -120,8 +136,11 @@ function About() {
                                     </button>
                                 </div>
                                 <div className="grid grid-cols-1 gap-3">
-                                    {strengthsData.slice(0, 3).map((strength) => (
-                                        <div key={strength.id} className="flex items-center bg-blue-50 p-3 rounded-lg">
+                                    {strengthsData.slice(0, 3).map((strength, index) => (
+                                        <div
+                                            key={strength.id}
+                                            className={`flex items-center bg-blue-50 p-3 rounded-lg fade-in-up stagger-delay-${index + 1} ${strengthsVisible ? 'visible' : ''}`}
+                                        >
                                             <div className="text-blue-600 mr-3">
                                                 {getStrengthIcon(strength.id)}
                                             </div>
@@ -144,7 +163,7 @@ function About() {
                             </div>
                         </div>
 
-                        <div className="flex justify-center">
+                        <div className={`flex justify-center fade-in-right ${contentVisible ? 'visible' : ''}`}>
                             <div className="w-80 h-80 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center overflow-hidden">
                                 <span className="text-white text-6xl font-bold">ŁN</span>
                             </div>
@@ -152,12 +171,15 @@ function About() {
                     </div>
 
                     {/* Value Proposition */}
-                    <div className="mt-16 bg-gray-50 rounded-xl p-8">
+                    <div
+                        ref={valueRef}
+                        className={`mt-16 bg-gray-50 rounded-xl p-8 fade-in-up ${valueVisible ? 'visible' : ''}`}
+                    >
                         <h3 className="text-2xl font-bold text-center text-gray-800 mb-6">
                             Dlaczego warto ze mną pracować?
                         </h3>
                         <div className="grid md:grid-cols-3 gap-6">
-                            <div className="text-center">
+                            <div className={`text-center scale-in stagger-delay-1 ${valueVisible ? 'visible' : ''}`}>
                                 <div className="flex justify-center mb-3">
                                     <div className="bg-blue-100 p-3 rounded-full">
                                         <Target className="w-6 h-6 text-blue-600" />
@@ -168,7 +190,7 @@ function About() {
                                     Analizuję twoje potrzeby i tworzę rozwiązania dopasowane do celów biznesowych
                                 </p>
                             </div>
-                            <div className="text-center">
+                            <div className={`text-center scale-in stagger-delay-2 ${valueVisible ? 'visible' : ''}`}>
                                 <div className="flex justify-center mb-3">
                                     <div className="bg-green-100 p-3 rounded-full">
                                         <TrendingUp className="w-6 h-6 text-green-600" />
@@ -179,7 +201,7 @@ function About() {
                                     Śledzę najnowsze trendy i technologie, by oferować nowoczesne rozwiązania
                                 </p>
                             </div>
-                            <div className="text-center">
+                            <div className={`text-center scale-in stagger-delay-3 ${valueVisible ? 'visible' : ''}`}>
                                 <div className="flex justify-center mb-3">
                                     <div className="bg-purple-100 p-3 rounded-full">
                                         <Users2 className="w-6 h-6 text-purple-600" />
@@ -223,8 +245,8 @@ function About() {
                                     </h4>
                                 </div>
                                 <span className="text-xs bg-gray-100 px-2 py-1 rounded">
-                  {strength.domain}
-                </span>
+                 {strength.domain}
+               </span>
                             </div>
                             <p className="text-gray-600 text-sm mb-3 italic">
                                 "{strength.description}"

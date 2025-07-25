@@ -1,10 +1,18 @@
 import { skillCategories, softSkills } from '../../data/skills'
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, BookOpen, TrendingUp } from 'lucide-react'
+import { useScrollAnimation } from '../../utils/scrollAnimations'
 
 function Skills() {
     const [activeCategory, setActiveCategory] = useState(0)
     const [currentSkillIndex, setCurrentSkillIndex] = useState(0)
+
+    // Scroll animations
+    const [titleRef, titleVisible] = useScrollAnimation()
+    const [tabsRef, tabsVisible] = useScrollAnimation()
+    const [carouselRef, carouselVisible] = useScrollAnimation()
+    const [softSkillsRef, softSkillsVisible] = useScrollAnimation()
+    const [statsRef, statsVisible] = useScrollAnimation()
 
     const currentCategory = skillCategories[activeCategory]
     const skillsPerView = 4
@@ -65,15 +73,23 @@ function Skills() {
         <section id="skills" className="py-20 bg-white">
             <div className="container mx-auto px-4">
                 <div className="max-w-7xl mx-auto">
-                    <h2 className="text-4xl font-bold text-center text-gray-800 mb-4">
+                    <h2
+                        ref={titleRef}
+                        className={`text-4xl font-bold text-center text-gray-800 mb-4 fade-in-up ${titleVisible ? 'visible' : ''}`}
+                    >
                         Umiejętności
                     </h2>
-                    <p className="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+                    <p
+                        className={`text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto fade-in-up ${titleVisible ? 'visible' : ''}`}
+                    >
                         Technologie i narzędzia, z którymi pracuję oraz kompetencje zdobyte przez lata doświadczenia
                     </p>
 
                     {/* Category Tabs */}
-                    <div className="flex flex-wrap justify-center gap-3 mb-12">
+                    <div
+                        ref={tabsRef}
+                        className={`flex flex-wrap justify-center gap-3 mb-12 fade-in-up ${tabsVisible ? 'visible' : ''}`}
+                    >
                         {skillCategories.map((category, index) => (
                             <button
                                 key={category.id}
@@ -81,7 +97,7 @@ function Skills() {
                                     setActiveCategory(index)
                                     setCurrentSkillIndex(0)
                                 }}
-                                className={`px-6 py-3 rounded-lg border-2 font-medium transition duration-300 ${
+                                className={`px-6 py-3 rounded-lg border-2 font-medium transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${tabsVisible ? 'visible' : ''} ${
                                     activeCategory === index
                                         ? getColorClasses(category.color, 'active')
                                         : getColorClasses(category.color, 'inactive')
@@ -93,7 +109,9 @@ function Skills() {
                     </div>
 
                     {/* Active Category Info */}
-                    <div className="text-center mb-8">
+                    <div
+                        className={`text-center mb-8 fade-in-up ${tabsVisible ? 'visible' : ''}`}
+                    >
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">
                             {currentCategory.title}
                         </h3>
@@ -103,7 +121,10 @@ function Skills() {
                     </div>
 
                     {/* Skills Carousel */}
-                    <div className="relative">
+                    <div
+                        ref={carouselRef}
+                        className={`relative fade-in-up ${carouselVisible ? 'visible' : ''}`}
+                    >
                         <div className="overflow-hidden">
                             <div
                                 className="flex transition-transform duration-500 ease-in-out"
@@ -116,7 +137,7 @@ function Skills() {
                                             key={index}
                                             className="w-1/4 flex-shrink-0 px-3"
                                         >
-                                            <div className={`p-6 rounded-xl border-2 h-full ${getColorClasses(currentCategory.color)} hover:shadow-lg transition duration-300`}>
+                                            <div className={`p-6 rounded-xl border-2 h-full ${getColorClasses(currentCategory.color)} hover:shadow-lg transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${carouselVisible ? 'visible' : ''}`}>
                                                 <div className="text-center">
                                                     <div className={`inline-flex p-4 rounded-full mb-4 ${
                                                         currentCategory.color === 'blue' ? 'bg-blue-100' :
@@ -182,7 +203,10 @@ function Skills() {
                     </div>
 
                     {/* Soft Skills */}
-                    <div className="mt-20 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8">
+                    <div
+                        ref={softSkillsRef}
+                        className={`mt-20 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8 fade-in-up ${softSkillsVisible ? 'visible' : ''}`}
+                    >
                         <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">
                             Umiejętności miękkie
                         </h3>
@@ -190,7 +214,10 @@ function Skills() {
                             {softSkills.map((skill, index) => {
                                 const IconComponent = skill.icon
                                 return (
-                                    <div key={index} className="bg-white rounded-lg p-4 hover:shadow-md transition duration-300">
+                                    <div
+                                        key={index}
+                                        className={`bg-white rounded-lg p-4 hover:shadow-md transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${softSkillsVisible ? 'visible' : ''}`}
+                                    >
                                         <div className="flex items-start">
                                             <div className="bg-blue-100 p-2 rounded-lg mr-3 mt-1">
                                                 <IconComponent className="w-5 h-5 text-blue-600" />
@@ -207,7 +234,10 @@ function Skills() {
                     </div>
 
                     {/* Bottom Stats */}
-                    <div className="mt-16 text-center">
+                    <div
+                        ref={statsRef}
+                        className={`mt-16 text-center fade-in-up ${statsVisible ? 'visible' : ''}`}
+                    >
                         <div className="bg-gray-50 rounded-xl p-8 max-w-4xl mx-auto">
                             <div className="flex items-center justify-center mb-4">
                                 <BookOpen className="w-6 h-6 text-blue-600 mr-2" />
@@ -216,15 +246,15 @@ function Skills() {
                                 </h3>
                             </div>
                             <div className="grid md:grid-cols-3 gap-6 mb-6">
-                                <div className="text-center">
+                                <div className={`text-center scale-in stagger-delay-1 ${statsVisible ? 'visible' : ''}`}>
                                     <div className="text-3xl font-bold text-blue-600 mb-2">4+</div>
                                     <div className="text-gray-600">projekty w portfolio</div>
                                 </div>
-                                <div className="text-center">
+                                <div className={`text-center scale-in stagger-delay-2 ${statsVisible ? 'visible' : ''}`}>
                                     <div className="text-3xl font-bold text-blue-600 mb-2">2+</div>
                                     <div className="text-gray-600">lata z React</div>
                                 </div>
-                                <div className="text-center">
+                                <div className={`text-center scale-in stagger-delay-3 ${statsVisible ? 'visible' : ''}`}>
                                     <div className="flex items-center justify-center mb-2">
                                         <TrendingUp className="w-8 h-8 text-blue-600" />
                                     </div>
