@@ -11,6 +11,10 @@ Tworzenie profesjonalnego portfolio dla **Łukasza Nowaka** - Junior Frontend De
 - **Responsywny design** z modern UI
 - **CliftonStrengths integration** - wyniki testu Galloupa w modalach
 - **Ikony Lucide** zamiast emoji (profesjonalny wygląd)
+- **Scroll animations** - smooth animations przy scrollowaniu
+- **Horizontal carousel** w Skills z category tabs
+- **SEO meta tags** - kompletne w index.html
+- **Domain ready** - przygotowane pod lukasznowak.dev
 - **Git repository** z historią commitów
 - **Prawdziwe dane** z CV (projekty, kontakt, umiejętności)
 
@@ -36,21 +40,24 @@ my-portfolio/
 │   │   │   ├── Footer.jsx      # Stopka z kontaktem i social links  
 │   │   │   └── Layout.jsx      # Wrapper dla całej aplikacji
 │   │   ├── sections/
-│   │   │   ├── Hero.jsx        # Główna sekcja z CTA buttons
-│   │   │   ├── About.jsx       # O mnie + CliftonStrengths modal
-│   │   │   ├── Skills.jsx      # Umiejętności z karuzelami
-│   │   │   ├── Projects.jsx    # Portfolio projektów z danymi
+│   │   │   ├── Hero.jsx        # Główna sekcja z CTA buttons + scroll animations
+│   │   │   ├── About.jsx       # O mnie + CliftonStrengths modal + animations
+│   │   │   ├── Skills.jsx      # Horizontal carousel + category tabs + animations
+│   │   │   ├── Projects.jsx    # Portfolio projektów z danymi + animations
 │   │   │   └── Contact.jsx     # Formularz + dane kontaktowe
 │   │   └── ui/
 │   │       └── Modal.jsx       # Reusable modal component
 │   ├── data/
 │   │   ├── projects.js         # Dane o projektach z CV
-│   │   └── skills.js           # Technologie + soft skills
+│   │   └── skills.js           # Technologie + soft skills z Lucide icons
+│   ├── utils/
+│   │   └── scrollAnimations.js # useScrollAnimation hook z Intersection Observer
 │   ├── App.jsx                 # Główny komponent aplikacji
 │   ├── main.jsx               # Entry point
-│   └── index.css              # Tailwind directives
+│   └── index.css              # Tailwind directives + scroll animation CSS
 ├── public/                    # Pliki statyczne
-├── package.json              # Dependencies
+├── index.html                # SEO meta tags + lukasznowak.dev domain
+├── package.json              # Dependencies (lucide-react added)
 ├── tailwind.config.js        # Konfiguracja Tailwind
 ├── vite.config.js           # Konfiguracja Vite + PostCSS
 └── README.md                # Projekt description
@@ -72,7 +79,7 @@ my-portfolio/
 
 ### 3. Modern UI/UX
 - **Responsive design** (mobile-first)
-- **Smooth animations** i hover effects  
+- **Smooth animations** i hover effects
 - **Professional icons** (Lucide React)
 - **Gradients + glassmorphism** w headerze
 - **Accessibility** - semantic HTML, proper ARIA
@@ -105,7 +112,7 @@ npm run preview    # Preview production build
 
 ### Kolory:
 - **Primary:** Blue-600 (#2563eb)
-- **Secondary:** Gray-800 (#1f2937)  
+- **Secondary:** Gray-800 (#1f2937)
 - **Background:** Gray-50 (#f9fafb)
 - **Accent:** Purple-500 (gradients)
 
@@ -116,73 +123,116 @@ npm run preview    # Preview production build
 
 ### Breakpoints (Tailwind):
 - **sm:** 640px+
-- **md:** 768px+ 
+- **md:** 768px+
 - **lg:** 1024px+
 
-## 🚨 PROBLEMY do rozwiązania
+## 🚨 NAJWAŻNIEJSZE PROBLEMY do rozwiązania
 
-### 1. **ŚCIANY KODU** - komponenty za duże!
-**Problem:** Header.jsx (150+ linii), About.jsx (200+ linii), Contact.jsx (180+ linii)
+### 1. **ŚCIANY KODU** - komponenty za duże! (KRYTYCZNY)
+**Problem:**
+- Header.jsx (150+ linii)
+- About.jsx (250+ linii z animacjami)
+- Skills.jsx (200+ linii)
+- Contact.jsx (180+ linii)
 
-**Rozwiązanie:** Podzielić na mniejsze komponenty:
+**Rozwiązanie - podzielić na mniejsze komponenty:**
 ```
 Header/ 
-├── Header.jsx (main)
-├── Navigation.jsx  
+├── Header.jsx (main wrapper)
+├── Navigation.jsx (desktop nav)
 ├── LanguageToggle.jsx
 └── MobileMenu.jsx
 
 About/
-├── About.jsx (main)
+├── About.jsx (main layout)
+├── PersonalInfo.jsx
 ├── CliftonStrengths.jsx
 ├── StrengthsModal.jsx  
 └── ValueProposition.jsx
+
+Skills/
+├── Skills.jsx (main wrapper)
+├── CategoryTabs.jsx
+├── SkillCarousel.jsx
+├── SkillCard.jsx
+└── SoftSkills.jsx
 ```
 
-### 2. Język - tylko polski
-**TODO:** Dodać pełną internationalization (i18n)
+### 2. **Brakujące assets** (WYSOKI)
+- **Logo design** - zamiast "ŁN" placeholder
+- **Zdjęcie profilowe** - zamiast gradientu w About
+- **og-image.jpg** (1200x630px) dla social media
+- **Favicon** - własny zamiast Vite logo
 
-### 3. Formularz kontaktowy  
-**TODO:** Podłączyć prawdziwy backend (EmailJS/Netlify Forms)
+### 3. Mobile responsiveness (ŚREDNI)
+- **Skills carousel** - 4 skills może być za dużo na telefonie
+- **CliftonStrengths modal** - może być za długi na mobile
+- **Contact form** - sprawdzić na małych ekranach
 
-### 4. Skills carousel
-**TODO:** Lepsze ikony technologii (może React Icons?)
+## 🚀 Następne kroki (priority order)
 
-## 🚀 Następne kroki (priorytet)
+### 1. **REFACTOR komponentów** (KRYTYCZNY - zrób to pierwsze!)
+- **Podziel duże komponenty** na mniejsze części (max 50-80 linii)
+- **Extract custom hooks** (animacje, form handling)
+- **Consistent naming** i file structure
+- **PropTypes validation** (opcjonalnie TypeScript)
 
-### 1. **REFACTOR komponentów** (WYSOKI)
-- Podzielić duże komponenty na mniejsze
-- Wyciągnąć logikę do custom hooks
-- Lepsze PropTypes/TypeScript?
+### 2. **Assets creation** (WYSOKI)
+- **Logo design** - profesjonalne logo ŁN
+- **Profile photo** - zdjęcie do About section
+- **og-image.jpg** - social media thumbnail 1200x630px
+- **Favicon set** - różne rozmiary dla urządzeń
 
-### 2. **Deployment** (WYSOKI)  
-- Vercel/Netlify deployment
-- Custom domain setup
-- Performance optimization
+### 3. **Deployment preparation** (WYSOKI)
+- **Domain purchase** - lukasznowak.dev
+- **Vercel/Netlify setup** z custom domain
+- **Environment variables** setup
+- **Performance audit** z Lighthouse
 
-### 3. **Content enhancement** (ŚREDNI)
-- Dodać zdjęcie do About section
-- Screenshoty projektów zamiast placeholderów
-- Animacje scroll-based (Framer Motion?)
+### 4. **Mobile optimization** (ŚREDNI)
+- **Skills carousel** responsive fixes
+- **Touch gestures** dla carousel
+- **Modal improvements** na mobile
+- **Font sizes** optimization
 
-### 4. **Technical improvements** (NISKI)
-- Dark mode toggle
-- SEO optimization (meta tags, OpenGraph)
-- Analytics (Google Analytics)
+### 5. **Advanced features** (NISKI - po podstawach)
+- **Contact form backend** (EmailJS/Netlify Forms)
+- **Internationalization** (Polish/English)
+- **Dark mode** toggle
+- **Blog section** (opcjonalnie)
 
 ## 💡 Wskazówki dla następnej sesji
 
 ### Co działa dobrze:
 - **Tailwind setup** - świetnie skonfigurowany
-- **Lucide icons** - profesjonalne, spójne
+- **Lucide icons** - profesjonalne, spójne przez cały projekt
 - **Data structure** - czytelne pliki w `/data`
-- **Responsive design** - działa na wszystkich ekranach
+- **Scroll animations** - smooth i performant
+- **Skills carousel** - nowoczesny UX
+- **CliftonStrengths** - unikalny wyróżnik
+- **SEO meta tags** - kompletne w index.html
+- **Domain ready** - lukasznowak.dev prepared
 
 ### Czego unikać:
-- **Nie dodawaj więcej emoji** - zostań przy Lucide
-- **Nie rób kolejnych ścian kodu** - zawsze dziel na mniejsze części
+- **Nie dodawaj więcej emoji** - zostań przy Lucide icons
+- **Nie rób kolejnych ścian kodu** - ZAWSZE dziel na mniejsze części (max 80 linii)
 - **Nie używaj localStorage** - nie działa w Claude artifacts
 - **Nie kopiuj długich bloków CSS** - zostań przy Tailwind utility classes
+- **Nie dodawaj nowych animacji** bez optymalizacji performance
+
+### Nowe przydatne patterns:
+```jsx
+// Scroll animations usage:
+const [ref, isVisible] = useScrollAnimation()
+<div ref={ref} className={`fade-in-up ${isVisible ? 'visible' : ''}`}>
+
+// Icon component pattern:
+const IconComponent = skill.icon
+<IconComponent className="w-6 h-6 text-blue-600" />
+
+// Staggered animations:
+className={`scale-in stagger-delay-${index + 1} ${visible ? 'visible' : ''}`}
+```
 
 ### Przydatne komendy:
 ```bash
@@ -198,8 +248,8 @@ npm run build
 
 ## 📞 Informacje kontaktowe (właściciel)
 
-**Łukasz Nowak** - Junior Frontend Developer
-- **Email:** theLukaszNowak85@gmail.com  
+**Łukasz Nowak** - Frontend Developer
+- **Email:** theLukaszNowak85@gmail.com
 - **Phone:** 509 266 079
 - **GitHub:** github.com/enowuigrek
 - **LinkedIn:** linkedin.com/in/the-lukasz-nowak85
@@ -211,9 +261,11 @@ npm run build
 
 1. **CliftonStrengths data** - nie zmieniaj bez zgody (copyright Gallup)
 2. **Personal data** - wszystkie dane kontaktowe są prawdziwe
-3. **Project URLs** - GitHub linki są aktywne i publiczne  
+3. **Project URLs** - GitHub linki są aktywne i publiczne
 4. **Technology focus** - React + AI + Frontend (nie backend!)
 
-**Ostatni commit:** "Replace emoji icons with professional Lucide icons and enhance UI"
+**Ostatni commit:** "Update index.html with SEO meta tags and lukasznowak.dev domain"
 **Branch:** main
-**Status:** Ready for component refactoring and deployment
+**Status:** Ready for component refactoring, assets creation, and deployment
+**Domain:** lukasznowak.dev (prepared, needs purchase)
+**Next priority:** Component refactoring (split large files)
