@@ -99,8 +99,7 @@ function Footer() {
                     {/* Bottom Bar */}
                     <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
                         <div className="text-gray-400 text-sm">
-                            © {currentYear} Łukasz Nowak aka enowuigrek
-                            . Wszystkie prawa zastrzeżone.
+                            © {currentYear} Łukasz Nowak aka enowuigrek. Wszystkie prawa zastrzeżone.
                         </div>
                         <div className="text-gray-400 text-sm mt-4 md:mt-0">
                             Zbudowane z ❤️ przy użyciu React + Tailwind CSS

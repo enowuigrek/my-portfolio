@@ -136,7 +136,7 @@ function About() {
                                     </button>
                                 </div>
                                 <div className="grid grid-cols-1 gap-3">
-                                    {strengthsData.slice(0, 3).map((strength, index) => (
+                                    {strengthsData.slice(0, 5).map((strength, index) => (
                                         <div
                                             key={strength.id}
                                             className={`flex items-center bg-blue-50 p-3 rounded-lg fade-in-up stagger-delay-${index + 1} ${strengthsVisible ? 'visible' : ''}`}

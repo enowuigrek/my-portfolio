@@ -60,9 +60,9 @@ function Header() {
                             onClick={toggleLanguage}
                             className="flex items-center space-x-1 text-gray-600 hover:text-blue-600 transition duration-300 border border-gray-300 rounded-md px-2 py-1"
                         >
-              <span className="text-sm font-medium">
-                {language.toUpperCase()}
-              </span>
+                            <span className="text-sm font-medium">
+                            {language.toUpperCase()}
+                            </span>
                             <Globe className="w-4 h-4" />
                         </button>
                     </div>
