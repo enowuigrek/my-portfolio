@@ -15,8 +15,14 @@ function About() {
     const [valueRef, valueVisible] = useScrollAnimation()
 
     return (
-        <section id="about" className="py-20 bg-white">
-            <div className="container mx-auto px-4">
+        <section
+            id="about"
+            className="relative py-20 bg-white z-10"
+        >
+            {/* Background insurance */}
+            <div className="absolute inset-0 bg-white -z-10"></div>
+
+            <div className="container mx-auto px-4 relative z-20">
                 <div className="max-w-6xl mx-auto">
                     <h2
                         ref={titleRef}

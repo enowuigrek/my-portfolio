@@ -1,7 +1,7 @@
 import { LanguageProvider } from './contexts/LanguageContext'
 import SEOHead from './components/seo/SEOHead'
 import Layout from './components/layout/Layout'
-import Hero from './components/sections/Hero'
+import Hero from './components/sections/Hero/Hero.jsx'
 import About from './components/sections/About/About'
 import Skills from './components/sections/Skills/Skills'
 import Projects from './components/sections/Projects/Projects'

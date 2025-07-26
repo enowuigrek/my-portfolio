@@ -37,9 +37,9 @@ my-portfolio/
 │   │   ├── layout/
 │   │   │   ├── Header/
 │   │   │   │   ├── Header.jsx            # 25 linii (było 150+)
-│   │   │   │   ├── Navigation.jsx        # Desktop/mobile nav
+│   │   │   │   ├── Navigation.jsx        # Desktop/mobile nav + smart scroll
 │   │   │   │   ├── LanguageToggle.jsx    # PL/EN przełącznik
-│   │   │   │   └── MobileMenu.jsx        # Hamburger menu
+│   │   │   │   └── MobileMenu.jsx        # Fullscreen animated menu
 │   │   │   ├── Footer/
 │   │   │   │   ├── Footer.jsx            # 25 linii (było 80)
 │   │   │   │   ├── FooterBrand.jsx       # Logo + social links
@@ -47,9 +47,12 @@ my-portfolio/
 │   │   │   │   └── FooterLocation.jsx    # Lokalizacja z pinezką
 │   │   │   └── Layout.jsx                # Wrapper dla całej aplikacji
 │   │   ├── sections/
-│   │   │   ├── Hero.jsx                  # 40 linii + tłumaczenia
+│   │   │   ├── Hero/                     # 🆕 REFACTORED - modular structure
+│   │   │   │   ├── Hero.jsx              # Main wrapper + scroll logic (35 linii)
+│   │   │   │   ├── HeroContent.jsx       # Text content + CTA button (30 linii)
+│   │   │   │   └── HeroScrollArrow.jsx   # Animated scroll arrow (25 linii)
 │   │   │   ├── About/
-│   │   │   │   ├── About.jsx             # 40 linii (było 200+)
+│   │   │   │   ├── About.jsx             # 40 linii (było 200+) + z-index fix
 │   │   │   │   ├── AboutContent.jsx      # Główna treść + zdjęcie
 │   │   │   │   ├── CliftonStrengths.jsx  # Sekcja z talentami
 │   │   │   │   ├── StrengthsModal.jsx    # Modal z pełnymi wynikami
@@ -67,6 +70,8 @@ my-portfolio/
 │   │   │       ├── Contact.jsx           # 25 linii (było 180)
 │   │   │       ├── ContactInfo.jsx       # Dane kontaktowe
 │   │   │       └── ContactForm.jsx       # Formularz z logiką
+│   │   ├── seo/
+│   │   │   └── SEOHead.jsx               # Dynamic SEO meta tags
 │   │   └── ui/
 │   │       └── Modal.jsx                 # Reusable modal component
 │   ├── contexts/
@@ -92,12 +97,18 @@ my-portfolio/
 ### 📊 **Redukcja rozmiaru komponentów:**
 | Komponent | Przed | Po | Redukcja |
 |-----------|-------|----|---------:|
+| Hero.jsx | 84 linii | 35 linii | **58%** |
 | Header.jsx | 150+ linii | 25 linii | **83%** |
 | About.jsx | 200+ linii | 40 linii | **80%** |
 | Contact.jsx | 180 linii | 25 linii | **86%** |
 | Skills.jsx | 200+ linii | 50 linii | **75%** |
 | Footer.jsx | 80 linii | 25 linii | **69%** |
 | Projects.jsx | 70 linii | 35 linii | **50%** |
+
+### 🆕 **Nowe komponenty modułowe:**
+- **HeroContent.jsx** - Text content + CTA button
+- **HeroScrollArrow.jsx** - Animated scroll arrow
+- **SEOHead.jsx** - Dynamic meta tags management
 
 ### 🌐 **Pełna internationalizacja:**
 - **LanguageContext** - globalny stan języka
@@ -142,13 +153,16 @@ my-portfolio/
 - **Kontakt:** Prawdziwy email, telefon, GitHub, LinkedIn
 - **Lokalizacja:** Częstochowa, Polska
 
-### 4. **Modern UI/UX** (ulepszone)
+### 4. **Modern UI/UX** (znacznie ulepszone)
 - **Responsive design** (mobile-first)
+- **Hero parallax scroll** z fade out animation
+- **Header transparency** + logo animation
+- **Navigation hover effects** z elegant underline
+- **Mobile fullscreen menu** z animations
 - **Smooth animations** i hover effects
 - **Professional icons** (Lucide React)
 - **Gradients + glassmorphism** w headerze
 - **Accessibility** - semantic HTML, proper ARIA
-- **Uproszczony footer** - bez redundancji z Contact
 
 ## 🛠️ Development setup (bez zmian)
 
@@ -167,8 +181,8 @@ npm run preview    # Preview production build
 ### Kluczowe dependencies:
 ```json
 {
-  "react": "^18.x",
-  "lucide-react": "^0.263.1", 
+  "react": "^19.x",
+  "lucide-react": "^0.525.0", 
   "tailwindcss": "^3.x",
   "vite": "^7.x"
 }
@@ -198,12 +212,13 @@ npm run preview    # Preview production build
 ~~**Problem:** Header.jsx (150+ linii), About.jsx (200+ linii), Contact.jsx (180+ linii)~~
 
 **✅ Rozwiązane:** Wszystkie komponenty podzielone na mniejsze moduły:
-- Header → 4 komponenty (Navigation, LanguageToggle, MobileMenu)
-- About → 5 komponentów (AboutContent, CliftonStrengths, StrengthsModal, ValueProposition)
-- Contact → 3 komponenty (ContactInfo, ContactForm)
-- Skills → 5 komponentów (SkillsNavigation, SkillsCarousel, SoftSkills, SkillsStats)
-- Projects → 2 komponenty (ProjectCard)
-- Footer → 4 komponenty (FooterBrand, FooterNavigation, FooterLocation)
+- **Hero** → 3 komponenty (HeroContent, HeroScrollArrow)
+- **Header** → 4 komponenty (Navigation, LanguageToggle, MobileMenu)
+- **About** → 5 komponentów (AboutContent, CliftonStrengths, StrengthsModal, ValueProposition)
+- **Contact** → 3 komponenty (ContactInfo, ContactForm)
+- **Skills** → 5 komponentów (SkillsNavigation, SkillsCarousel, SoftSkills, SkillsStats)
+- **Projects** → 2 komponenty (ProjectCard)
+- **Footer** → 4 komponenty (FooterBrand, FooterNavigation, FooterLocation)
 
 ### 2. ~~**Język - tylko polski**~~ ✅ **SOLVED**
 ~~**TODO:** Dodać pełną internationalization (i18n)~~
@@ -236,14 +251,14 @@ npm run preview    # Preview production build
 - ✅ **Clean Architecture** - wszystkie komponenty refactored
 - ✅ **Internationalization** - pełne tłumaczenia PL/EN
 - ✅ **Performance optimized** - małe komponenty
-- ✅ **SEO ready** - meta tags w index.html
+- ✅ **SEO ready** - meta tags w index.html + SEOHead component
 - ✅ **Accessibility** - semantic HTML, ARIA labels
 - ✅ **Mobile responsive** - wszystkie ekrany
 - ✅ **Professional UI** - spójny design system
 
 ### **Deployment Plan:**
-1. **Netlify deployment** - gotowe do wrzucenia
-2. **Custom domain** - kupić lukasznowak.dev
+1. ✅ **Netlify deployment** - DONE - https://lukasznowak.dev
+2. ✅ **Custom domain** - DONE - lukasznowak.dev
 3. **Analytics** - Google Analytics (opcjonalnie)
 
 ## 💡 **Wskazówki dla przyszłego developmentu**
@@ -304,9 +319,82 @@ git push origin main
 4. **Full internationalization** ✅
 5. **Professional design** ✅
 
-**Status:** ✅ **GOTOWE DO DEPLOYMENT NA NETLIFY**
-
-**Ostatni refactor:** "Complete component refactoring and internationalization - reduce main components by 70-85%, add full PL/EN translations"
+**Status:** ✅ **DEPLOYED & LIVE** - https://lukasznowak.dev
 
 **Branch:** main  
-**Next step:** 🚀 **DEPLOYMENT**
+**Last commit:** Hero parallax, navigation improvements and header enhancements
+
+---
+
+## 📋 **UX IMPROVEMENTS CHECKLIST**
+
+### **🖥️ Desktop Issues:**
+- [x] **Hero parallax scroll** ✅ **DONE** - smooth parallax + fade out
+- [x] **Header transparency** ✅ **DONE** - transparent → white on scroll
+- [x] **Navigation hover** ✅ **DONE** - elegant underline animation
+- [x] **Hero CTA button** ✅ **DONE** - "Napisz do mnie" → Contact scroll
+- [x] **Header logo change** ✅ **DONE** - "ŁukaszNowakDev" → "ŁN" on scroll
+- [ ] **Projects cards height** - zmniejszyć nagłówki żeby pasowały do wysokości sekcji
+- [ ] **Skills carousel drag** - obsługa myszką lewo/prawo + zapętlenie
+- [ ] **Auto-scroll reset** - zerować timer przy manual scroll
+
+### **📱 Mobile Issues:**
+- [x] **Mobile menu animation** ✅ **DONE** - fullscreen slide down + animations
+- [x] **Mobile header hamburger** ✅ **DONE** - animacja → X + fullscreen menu
+- [ ] **Skills cards width** - sztywna szerokość, jedna karta + swipe
+- [ ] **CliftonStrengths scroll timing** - wcześniejsze pojawienie się
+- [ ] **Strengths modal fullscreen** - cały ekran mobile + X do zamknięcia
+- [ ] **Tech approach icon** - książka nad nagłówkiem na środku
+- [ ] **Footer overlay** - zasłania Contact + header hide animation
+
+### **🎯 New Features:**
+- [x] **Hero CTA button** ✅ **DONE** - "Napisz do mnie" / "Contact me"
+- [x] **Header logo change** ✅ **DONE** - dynamic logo on scroll
+- [x] **Smooth section transitions** ✅ **DONE** - parallax + fade animations
+- [ ] **Skills carousel looping** - infinite scroll
+- [ ] **Touch gestures** - swipe support dla mobile carousel
+
+### **🔧 Technical Fixes:**
+- [x] **Mobile header hamburger** ✅ **DONE** - full animation
+- [x] **Scroll intersection** ✅ **DONE** - better timing for animations
+- [x] **Header hide animation** ✅ **DONE** - hide on scroll down, show on scroll up
+- [ ] **Touch gestures** - swipe support dla mobile carousel
+- [ ] **Performance** - optymalizacja animacji mobile
+
+### **🎨 Visual Polish:**
+- [x] **Color transitions** ✅ **DONE** - smooth header transitions
+- [x] **Animation timing** ✅ **DONE** - consistent delays and durations
+- [x] **Navigation hover effects** ✅ **DONE** - elegant underline
+- [ ] **Mobile spacing** - lepsze paddingi na małych ekranach
+- [ ] **Footer branding** - spójne logo w footer
+
+---
+
+## 🎉 **OSTATNIE ZMIANY (CURRENT SESSION)**
+
+### ✅ **Hero Section Refactor:**
+- **Modular components** - HeroContent, HeroScrollArrow
+- **Parallax scroll effect** - content moves slower than scroll
+- **Content fade out** - starts at 150px, ends at 600px scroll
+- **CTA button** - scrolls to contact section
+- **58% code reduction** - from 84 to 35 lines
+
+### ✅ **Header Enhancements:**
+- **Transparency effect** - transparent → white with backdrop blur
+- **Logo animation** - "ŁukaszNowakDev" → "ŁN" on scroll
+- **Hide/show animation** - based on scroll direction
+- **Navigation improvements** - smart scroll handling
+
+### ✅ **Navigation Improvements:**
+- **Smart scroll handling** - home goes to top, others to sections
+- **Elegant hover effects** - underline animation
+- **Mobile fullscreen menu** - slide down with staggered animations
+- **Language toggle** - improved styling
+
+### ✅ **Technical Fixes:**
+- **Z-index hierarchy** - proper layering (Hero → About)
+- **About section background** - forced white background
+- **Scroll event optimization** - passive listeners
+- **Component architecture** - better separation of concerns
+
+**Next priorities:** Projects cards height, Skills carousel drag, Mobile optimizations

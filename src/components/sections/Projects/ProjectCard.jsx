@@ -11,26 +11,26 @@ function ProjectCard({ project, index, isVisible }) {
             className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${isVisible ? 'visible' : ''}`}
         >
             {/* Project Image */}
-            <div className="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">{project.title}</span>
+            <div className="h-40 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                <span className="text-white text-xl font-bold">{project.title}</span>
             </div>
 
             {/* Project Content */}
             <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
+                <h3 className="text-lg font-bold text-gray-800 mb-2">
                     {project.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-3 leading-relaxed text-sm">
                     {project.description}
                 </p>
 
                 {/* Highlights */}
                 <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                    <h4 className="text-xs font-semibold text-gray-700 mb-2">
                         {t.projectsFeatures}
                     </h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                    <ul className="text-xs text-gray-600 space-y-1">
                         {project.highlights.map((highlight, idx) => (
                             <li key={idx} className="flex items-start">
                                 <span className="text-blue-500 mr-2">•</span>
