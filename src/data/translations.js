@@ -10,7 +10,8 @@ export const translations = {
         // Hero section
         heroGreeting: 'Cześć, jestem',
         heroTitle: 'Frontend Developer',
-        heroSubtitle: 'Tworzę nowoczesne aplikacje webowe w React. Łączę doświadczenie biznesowe z pasją do kodowania.',
+        heroSubtitle: 'Tworzę nowoczesne strony internetowe i aplikacje webowe na zlecenie. Specjalizuję się w React, JavaScript oraz integracji z AI.',
+        heroSubtitle2: 'Potrzebujesz profesjonalnej strony internetowej lub aplikacji webowej? Skontaktuj się ze mną - razem stworzymy rozwiązanie dopasowane do Twoich potrzeb.',
         heroButtonProjects: 'Zobacz moje projekty',
         heroButtonContact: 'Skontaktuj się',
 
@@ -147,7 +148,8 @@ export const translations = {
         // Hero section
         heroGreeting: 'Hi, I\'m',
         heroTitle: 'Frontend Developer',
-        heroSubtitle: 'I create modern web applications with React. Combining business experience with passion for coding.',
+        heroSubtitle: 'I create modern websites and web applications on commission. Specializing in React, JavaScript and AI integration.',
+        heroSubtitle2: 'Need a professional website or web application? Contact me - together we\'ll create a solution tailored to your needs.',
         heroButtonProjects: 'View my projects',
         heroButtonContact: 'Get in touch',
 

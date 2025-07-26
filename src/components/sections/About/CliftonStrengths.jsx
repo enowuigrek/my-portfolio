@@ -90,16 +90,6 @@ function CliftonStrengths({ isVisible }) {
                         </div>
                     ))}
                 </div>
-
-                <div className="mt-3 text-center">
-                    <button
-                        onClick={() => setShowStrengthsModal(true)}
-                        className="flex items-center text-blue-600 hover:text-blue-700 text-sm mx-auto"
-                    >
-                        {t.aboutAllTalents}
-                        <ArrowRight className="w-4 h-4 ml-1" />
-                    </button>
-                </div>
             </div>
 
             <StrengthsModal

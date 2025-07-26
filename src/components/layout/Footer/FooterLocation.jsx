@@ -11,7 +11,7 @@ function FooterLocation() {
             </h4>
             <div className="flex items-center text-gray-300 text-sm">
                 <MapPin className="w-4 h-4 mr-2" />
-                Częstochowa, Polska
+                {language === 'pl' ? 'Częstochowa, Polska' : 'Częstochowa, Poland'}
             </div>
         </div>
     )
