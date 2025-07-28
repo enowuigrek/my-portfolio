@@ -11,7 +11,6 @@ function About() {
     // Scroll animations
     const [titleRef, titleVisible] = useScrollAnimation()
     const [contentRef, contentVisible] = useScrollAnimation()
-    const [strengthsRef, strengthsVisible] = useScrollAnimation()
     const [valueRef, valueVisible] = useScrollAnimation()
 
     return (
@@ -32,15 +31,7 @@ function About() {
                     </h2>
 
                     <div ref={contentRef}>
-                        <AboutContent
-                            isVisible={contentVisible}
-                            strengthsVisible={strengthsVisible}
-                        />
-                    </div>
-
-                    <div ref={strengthsRef}>
-                        {/* CliftonStrengths is now inside AboutContent */}
-                        strengthsVisible={strengthsVisible}
+                        <AboutContent isVisible={contentVisible} />
                     </div>
 
                     <div ref={valueRef}>

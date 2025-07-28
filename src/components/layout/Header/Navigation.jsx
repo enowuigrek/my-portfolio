@@ -31,12 +31,14 @@ function Navigation({ isMobile = false, onLinkClick, isScrolled = false }) {
     }
 
     const baseClasses = isMobile
-        ? "block py-3 px-4 text-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300 transform hover:scale-105"
-        : `relative font-medium transition-all duration-300 transform hover:scale-105 ${
+        ? `block py-3 px-4 text-lg font-medium rounded-lg transition-all duration-300 transform hover:scale-105 ${
+            isScrolled ? 'text-gray-800 hover:text-blue-600 hover:bg-blue-50' : 'text-white hover:text-blue-400 hover:bg-white/10'
+        }`
+        : `font-medium transition-all duration-300 transform hover:scale-110 hover:tracking-wide ${
             isScrolled
                 ? 'text-gray-700 hover:text-blue-600'
-                : 'text-gray-700 hover:text-blue-600'
-        } group`
+                : 'text-white hover:text-blue-400'
+        }`
 
     const containerClasses = isMobile
         ? "flex flex-col space-y-2 px-4 py-6"
@@ -52,12 +54,6 @@ function Navigation({ isMobile = false, onLinkClick, isScrolled = false }) {
                     onClick={(e) => handleNavClick(e, href, key)}
                 >
                     {label}
-                    {!isMobile && (
-                        <>
-                            {/* Hover underline effect */}
-                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-                        </>
-                    )}
                 </a>
             ))}
         </div>

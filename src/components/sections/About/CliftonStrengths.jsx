@@ -4,7 +4,7 @@ import StrengthsModal from './StrengthsModal'
 import { useLanguage } from '../../../contexts/LanguageContext'
 import { translations } from '../../../data/translations'
 
-function CliftonStrengths({ isVisible }) {
+function CliftonStrengths({ isVisible, strengthsRef }) {
     const [showStrengthsModal, setShowStrengthsModal] = useState(false)
     const { language } = useLanguage()
     const t = translations[language]
@@ -60,7 +60,7 @@ function CliftonStrengths({ isVisible }) {
 
     return (
         <>
-            <div className={`mb-8 fade-in-left ${isVisible ? 'visible' : ''}`}>
+            <div ref={strengthsRef} className={`mb-8 fade-in-left ${isVisible ? 'visible' : ''}`}>
                 <div className="flex items-center justify-between mb-4">
                     <h4 className="text-lg font-semibold text-gray-800">
                         {t.aboutTalents}

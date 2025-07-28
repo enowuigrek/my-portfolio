@@ -17,10 +17,10 @@ function HeroScrollArrow({ arrowOpacity }) {
         >
             <button
                 onClick={scrollToAbout}
-                className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
+                className="text-gray-300 hover:text-white transition-colors duration-300"
                 aria-label={language === 'pl' ? 'Przewiń w dół' : 'Scroll down'}
             >
-                <ChevronDown className="w-14 h-14 animate-bounce opacity-60 hover:opacity-80" />
+                <ChevronDown className="w-14 h-14 animate-bounce opacity-80 hover:opacity-100" />
             </button>
         </div>
     )

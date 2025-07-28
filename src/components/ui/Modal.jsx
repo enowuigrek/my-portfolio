@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { X } from 'lucide-react'
 
 function Modal({ isOpen, onClose, children, title }) {
@@ -8,44 +9,53 @@ function Modal({ isOpen, onClose, children, title }) {
         } else {
             document.body.style.overflow = 'unset'
         }
-
         return () => {
             document.body.style.overflow = 'unset'
         }
     }, [isOpen])
 
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') onClose()
+        }
+        if (isOpen) {
+            document.addEventListener('keydown', handleEscape)
+        }
+        return () => document.removeEventListener('keydown', handleEscape)
+    }, [isOpen, onClose])
+
     if (!isOpen) return null
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto bg-black-400">
-            <div className="relative">
-                {/* Backdrop */}
-                <div
-                    className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                    onClick={onClose}
-                />
+    // Renderuj modal bezpośrednio w body używając Portal
+    return createPortal(
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50"
+            onClick={onClose}
+        >
+            <div
+                className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* Header */}
+                <div className="flex justify-between items-center p-6 border-b border-gray-200 flex-shrink-0">
+                    <h3 className="text-xl font-semibold text-gray-900">
+                        {title}
+                    </h3>
+                    <button
+                        onClick={onClose}
+                        className="text-gray-500 hover:text-gray-700 p-1 rounded hover:bg-gray-100 transition-colors"
+                    >
+                        <X className="w-6 h-6" />
+                    </button>
+                </div>
 
-                {/* Modal */}
-                <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
-                    <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <div className="flex justify-between items-center mb-4">
-                            <h3 className="text-lg leading-6 font-medium text-gray-900">
-                                {title}
-                            </h3>
-                            <button
-                                onClick={onClose}
-                                className="text-gray-400 hover:text-gray-600 transition duration-200"
-                            >
-                                <X className="w-6 h-6" />
-                            </button>
-                        </div>
-                        <div className="max-h-96 overflow-y-auto">
-                            {children}
-                        </div>
-                    </div>
+                {/* Content - scrollowalny */}
+                <div className="flex-1 overflow-y-auto p-6">
+                    {children}
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body // Portal renderuje modal bezpośrednio w body!
     )
 }
 
