@@ -30,7 +30,7 @@ function MobileMenu() {
 
             {/* Mobile Navigation Menu */}
             {isOpen && (
-                <div className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-t border-gray-200 mt-4 pb-4 px-4">
+                <div className="absolute top-full left-0 right-0 bg-white">
                     <Navigation isMobile={true} onLinkClick={closeMenu} />
                 </div>
             )}

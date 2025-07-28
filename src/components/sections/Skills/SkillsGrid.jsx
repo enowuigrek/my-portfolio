@@ -1,5 +1,4 @@
 import React from 'react'
-import { Sparkles, Zap, Star, Trophy } from 'lucide-react'
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from 'react-icons/fa'
 import { SiTypescript, SiTailwindcss, SiVite, SiOpenai } from 'react-icons/si'
 import { DiJavascript1 } from 'react-icons/di'
@@ -23,7 +22,7 @@ const LogoComponents = {
   'OpenAI API': SiOpenai,
 };
 
-function SkillsCarousel({ currentCategory, isVisible }) {
+function SkillsGrid({ currentCategory, isVisible }) {
     const colorClasses = getColorClasses(currentCategory.color);
 
     return (
@@ -38,8 +37,8 @@ function SkillsCarousel({ currentCategory, isVisible }) {
                 </p>
             </div>
 
-            {/* 3D Skills Cards Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {/* Skills Cards Grid */}
+            <div className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 fade-in-up ${isVisible ? 'visible' : ''}`}>
                 {currentCategory.skills.map((skill, index) => {
                   const Logo = LogoComponents[skill.name] || skill.icon;
                   return (
@@ -62,4 +61,4 @@ function SkillsCarousel({ currentCategory, isVisible }) {
     )
 }
 
-export default SkillsCarousel
+export default SkillsGrid

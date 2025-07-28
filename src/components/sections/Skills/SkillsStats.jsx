@@ -28,7 +28,6 @@ function SkillsStats({ isVisible }) {
         <div className={`mt-16 text-center fade-in-up ${isVisible ? 'visible' : ''}`}>
             <div className="bg-gray-50 rounded-xl p-8 max-w-4xl mx-auto">
                 <div className="flex items-center justify-center mb-4">
-                    <BookOpen className="w-6 h-6 text-blue-600 mr-2" />
                     <h3 className="text-2xl font-bold text-gray-800">
                         {t.skillsApproach}
                     </h3>

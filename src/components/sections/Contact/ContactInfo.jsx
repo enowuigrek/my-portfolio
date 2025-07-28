@@ -61,17 +61,6 @@ function ContactInfo() {
                     </div>
                 ))}
             </div>
-
-            {/* Quick Response Info */}
-            <div className="mt-8 p-6 bg-blue-50 rounded-lg">
-                <h4 className="font-semibold text-gray-800 mb-2 flex items-center">
-                    <Send className="w-4 h-4 mr-2" />
-                    {t.contactQuickResponse}
-                </h4>
-                <p className="text-gray-600 text-sm">
-                    {t.contactQuickResponseDesc}
-                </p>
-            </div>
         </div>
     )
 }

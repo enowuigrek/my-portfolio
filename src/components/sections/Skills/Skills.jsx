@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getSkillCategories } from '../../../data/skills.js'
 import SkillsNavigation from './SkillsNavigation'
-import SkillsGrid from './SkillsCarousel'
+import SkillsGrid from './SkillsGrid'
 import SoftSkills from './SoftSkills'
 import SkillsStats from './SkillsStats'
 import { useScrollAnimation } from '../../../utils/scrollAnimations'

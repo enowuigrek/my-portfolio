@@ -22,7 +22,7 @@ function AboutContent({ isVisible, strengthsVisible }) {
                     {t.aboutParagraph3}
                 </p>
 
-                <CliftonStrengths isVisible={strengthsVisible} />
+                <CliftonStrengths isVisible={`fade-in-left ${isVisible ? 'visible' : ''}`} />
             </div>
 
             <div className={`flex justify-center fade-in-right ${isVisible ? 'visible' : ''}`}>

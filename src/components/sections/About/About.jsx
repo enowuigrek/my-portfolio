@@ -40,6 +40,7 @@ function About() {
 
                     <div ref={strengthsRef}>
                         {/* CliftonStrengths is now inside AboutContent */}
+                        strengthsVisible={strengthsVisible}
                     </div>
 
                     <div ref={valueRef}>

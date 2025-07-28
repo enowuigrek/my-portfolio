@@ -220,7 +220,6 @@ export const skillCategories = [
             { name: "AI Agents", icon: Brain, experience: "Własne boty" },
             { name: "Prompt Engineering", icon: MessageSquare, experience: "Zaawansowany" },
             { name: "Claude API", icon: Sparkles, experience: "Integracje" },
-            { name: "Langchain", icon: Link, experience: "Podstawy" },
             { name: "Vector Databases", icon: Database, experience: "Eksperymentuję" }
         ]
     }
