@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getSkillCategories } from '../../../data/skills.js'
 import SkillsNavigation from './SkillsNavigation'
-import SkillsCarousel from './SkillsCarousel'
+import SkillsGrid from './SkillsCarousel'
 import SoftSkills from './SoftSkills'
 import SkillsStats from './SkillsStats'
 import { useScrollAnimation } from '../../../utils/scrollAnimations'
@@ -57,7 +57,7 @@ function Skills() {
 
                     {/* Skills Carousel */}
                     <div ref={carouselRef}>
-                        <SkillsCarousel
+                        <SkillsGrid
                             currentCategory={currentCategory}
                             isVisible={carouselVisible}
                         />

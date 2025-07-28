@@ -9,7 +9,7 @@ function Header() {
                 <div className="flex justify-between items-center">
                     {/* Logo */}
                     <div className="text-2xl font-bold text-gray-800">
-                        ŁukaszNowakDev
+                        Łukasz Nowak
                     </div>
 
                     {/* Desktop Navigation + Language Toggle */}

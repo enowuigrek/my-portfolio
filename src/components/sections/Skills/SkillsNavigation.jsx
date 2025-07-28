@@ -35,7 +35,7 @@ function SkillsNavigation({ activeCategory, onCategoryChange, isVisible, skillCa
                 <button
                     key={category.id}
                     onClick={() => onCategoryChange(index)}
-                    className={`px-6 py-3 rounded-lg border-2 font-medium transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${isVisible ? 'visible' : ''} ${
+                    className={`w-56 h-14 rounded-lg border-2 font-medium transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${isVisible ? 'visible' : ''} ${
                         activeCategory === index
                             ? getColorClasses(category.color, true)
                             : getColorClasses(category.color, false)

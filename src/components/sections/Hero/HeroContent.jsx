@@ -1,7 +1,7 @@
 import { useLanguage } from '../../../contexts/LanguageContext'
 import { translations } from '../../../data/translations'
 
-function HeroContent({ contentOpacity }) {
+function HeroContent() {
     const { language } = useLanguage()
     const t = translations[language]
 
@@ -10,10 +10,7 @@ function HeroContent({ contentOpacity }) {
     }
 
     return (
-        <div
-            className="container mx-auto px-4 py-16 transition-opacity duration-300"
-            style={{ opacity: contentOpacity }}
-        >
+        <div className="container mx-auto px-4 py-16">
             <div className="text-center">
                 <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6">
                     {t.heroGreeting} <span className="text-blue-600">Łukasz</span>
@@ -24,10 +21,6 @@ function HeroContent({ contentOpacity }) {
                 <p className="text-lg text-gray-500 mb-6 max-w-3xl mx-auto">
                     {t.heroSubtitle}
                 </p>
-                <p className="text-lg text-gray-400 mb-8 max-w-3xl mx-auto">
-                    {t.heroSubtitle2}
-                </p>
-
                 {/* Hero CTA Button */}
                 <button
                     onClick={scrollToContact}

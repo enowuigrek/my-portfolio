@@ -1,57 +1,30 @@
-import { useState, useEffect } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import React from 'react'
+import { Sparkles, Zap, Star, Trophy } from 'lucide-react'
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from 'react-icons/fa'
+import { SiTypescript, SiTailwindcss, SiVite, SiOpenai } from 'react-icons/si'
+import { DiJavascript1 } from 'react-icons/di'
+
+const getColorClasses = (color) => ({
+  blue: { gradient: 'from-blue-400 to-blue-600' },
+  green: { gradient: 'from-green-400 to-green-600' },
+  purple: { gradient: 'from-purple-400 to-purple-600' },
+  orange: { gradient: 'from-orange-400 to-orange-600' },
+}[color] || { gradient: 'from-gray-400 to-gray-600' });
+
+const LogoComponents = {
+  React: FaReact,
+  NodeJS: FaNodeJs,
+  HTML5: FaHtml5,
+  CSS3: FaCss3Alt,
+  JavaScript: DiJavascript1,
+  TypeScript: SiTypescript,
+  TailwindCSS: SiTailwindcss,
+  Vite: SiVite,
+  'OpenAI API': SiOpenai,
+};
 
 function SkillsCarousel({ currentCategory, isVisible }) {
-    const [currentSkillIndex, setCurrentSkillIndex] = useState(0)
-    const skillsPerView = 4
-
-    const visibleSkills = currentCategory.skills.slice(
-        currentSkillIndex,
-        currentSkillIndex + skillsPerView
-    )
-
-    // Auto-advance carousel
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSkillIndex(prev =>
-                (prev + 1) % Math.max(1, currentCategory.skills.length - skillsPerView + 1)
-            )
-        }, 4000)
-
-        return () => clearInterval(interval)
-    }, [currentCategory.skills.length])
-
-    // Reset carousel when category changes
-    useEffect(() => {
-        setCurrentSkillIndex(0)
-    }, [currentCategory.id])
-
-    const nextSkills = () => {
-        setCurrentSkillIndex(prev =>
-            Math.min(prev + 1, currentCategory.skills.length - skillsPerView)
-        )
-    }
-
-    const prevSkills = () => {
-        setCurrentSkillIndex(prev => Math.max(prev - 1, 0))
-    }
-
-    const goToSlide = (index) => {
-        setCurrentSkillIndex(index)
-    }
-
-    const getColorClasses = (color) => {
-        const colors = {
-            blue: { bg: 'bg-blue-50', iconBg: 'bg-blue-100', iconColor: 'text-blue-600', border: 'border-blue-200' },
-            green: { bg: 'bg-green-50', iconBg: 'bg-green-100', iconColor: 'text-green-600', border: 'border-green-200' },
-            purple: { bg: 'bg-purple-50', iconBg: 'bg-purple-100', iconColor: 'text-purple-600', border: 'border-purple-200' },
-            orange: { bg: 'bg-orange-50', iconBg: 'bg-orange-100', iconColor: 'text-orange-600', border: 'border-orange-200' }
-        }
-        return colors[color] || colors.blue
-    }
-
-    const colorClasses = getColorClasses(currentCategory.color)
-    const maxSlides = Math.max(1, currentCategory.skills.length - skillsPerView + 1)
+    const colorClasses = getColorClasses(currentCategory.color);
 
     return (
         <>
@@ -65,70 +38,24 @@ function SkillsCarousel({ currentCategory, isVisible }) {
                 </p>
             </div>
 
-            {/* Skills Carousel */}
-            <div className={`relative fade-in-up ${isVisible ? 'visible' : ''}`}>
-                <div className="overflow-hidden">
+            {/* 3D Skills Cards Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                {currentCategory.skills.map((skill, index) => {
+                  const Logo = LogoComponents[skill.name] || skill.icon;
+                  return (
                     <div
-                        className="flex transition-transform duration-500 ease-in-out"
-                        style={{ transform: `translateX(-${currentSkillIndex * (100 / skillsPerView)}%)` }}
+                      key={index}
+                      className={`
+                        flex flex-col items-center p-6 rounded-lg shadow-lg hover:shadow-2xl
+                        transition bg-gradient-to-br ${colorClasses.gradient} text-white
+                      `}
                     >
-                        {currentCategory.skills.map((skill, index) => {
-                            const IconComponent = skill.icon
-                            return (
-                                <div
-                                    key={index}
-                                    className="w-1/4 flex-shrink-0 px-3"
-                                >
-                                    <div className={`p-6 rounded-xl border-2 h-full ${colorClasses.bg} ${colorClasses.border} hover:shadow-lg transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${isVisible ? 'visible' : ''}`}>
-                                        <div className="text-center">
-                                            <div className={`inline-flex p-4 rounded-full mb-4 ${colorClasses.iconBg}`}>
-                                                <IconComponent className={`w-8 h-8 ${colorClasses.iconColor}`} />
-                                            </div>
-                                            <h4 className="font-bold text-gray-800 mb-2">{skill.name}</h4>
-                                            <p className="text-sm text-gray-600">{skill.experience}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                      <Logo className="w-12 h-12 mb-3" />
+                      <h4 className="text-sm font-medium text-white">
+                        {skill.name}
+                      </h4>
                     </div>
-                </div>
-
-                {/* Navigation Arrows */}
-                <button
-                    onClick={prevSkills}
-                    disabled={currentSkillIndex === 0}
-                    className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    <ChevronLeft className="w-6 h-6 text-gray-600" />
-                </button>
-
-                <button
-                    onClick={nextSkills}
-                    disabled={currentSkillIndex >= currentCategory.skills.length - skillsPerView}
-                    className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    <ChevronRight className="w-6 h-6 text-gray-600" />
-                </button>
-            </div>
-
-            {/* Dots Indicator */}
-            <div className="flex justify-center mt-6 space-x-2">
-                {Array.from({ length: maxSlides }).map((_, index) => {
-                    const dotColor = currentSkillIndex === index
-                        ? currentCategory.color === 'blue' ? 'bg-blue-600' :
-                            currentCategory.color === 'green' ? 'bg-green-600' :
-                                currentCategory.color === 'purple' ? 'bg-purple-600' :
-                                    'bg-orange-600'
-                        : 'bg-gray-300'
-
-                    return (
-                        <button
-                            key={index}
-                            onClick={() => goToSlide(index)}
-                            className={`w-3 h-3 rounded-full transition duration-300 ${dotColor}`}
-                        />
-                    )
+                  )
                 })}
             </div>
         </>

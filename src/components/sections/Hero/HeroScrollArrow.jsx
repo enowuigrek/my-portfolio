@@ -20,7 +20,7 @@ function HeroScrollArrow({ arrowOpacity }) {
                 className="text-gray-400 hover:text-blue-500 transition-colors duration-300"
                 aria-label={language === 'pl' ? 'Przewiń w dół' : 'Scroll down'}
             >
-                <ChevronDown className="w-24 h-24 animate-bounce opacity-60 hover:opacity-80" />
+                <ChevronDown className="w-32 h-32 animate-bounce opacity-60 hover:opacity-80" />
             </button>
         </div>
     )

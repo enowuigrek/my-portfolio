@@ -328,27 +328,15 @@ git push origin main
 
 ## 📋 **UX IMPROVEMENTS CHECKLIST**
 
-### **🖥️ Desktop Issues:**
-- [x] **Hero parallax scroll** ✅ **DONE** - smooth parallax + fade out
-- [x] **Header transparency** ✅ **DONE** - transparent → white on scroll
-- [x] **Navigation hover** ✅ **DONE** - elegant underline animation
-- [x] **Hero CTA button** ✅ **DONE** - "Napisz do mnie" → Contact scroll
-- [x] **Header logo change** ✅ **DONE** - "ŁukaszNowakDev" → "ŁN" on scroll
-- [ ] **Projects cards height** - zmniejszyć nagłówki żeby pasowały do wysokości sekcji
-- [ ] **Skills carousel drag** - obsługa myszką lewo/prawo + zapętlenie
-- [ ] **Auto-scroll reset** - zerować timer przy manual scroll
-
 ### **📱 Mobile Issues:**
 - [x] **Mobile menu animation** ✅ **DONE** - fullscreen slide down + animations
 - [x] **Mobile header hamburger** ✅ **DONE** - animacja → X + fullscreen menu
-- [ ] **Skills cards width** - sztywna szerokość, jedna karta + swipe
 - [ ] **CliftonStrengths scroll timing** - wcześniejsze pojawienie się
 - [ ] **Strengths modal fullscreen** - cały ekran mobile + X do zamknięcia
 - [ ] **Tech approach icon** - książka nad nagłówkiem na środku
 - [ ] **Footer overlay** - zasłania Contact + header hide animation
 
 ### **🎯 New Features:**
-- [x] **Hero CTA button** ✅ **DONE** - "Napisz do mnie" / "Contact me"
 - [x] **Header logo change** ✅ **DONE** - dynamic logo on scroll
 - [x] **Smooth section transitions** ✅ **DONE** - parallax + fade animations
 - [ ] **Skills carousel looping** - infinite scroll
@@ -369,32 +357,3 @@ git push origin main
 - [ ] **Footer branding** - spójne logo w footer
 
 ---
-
-## 🎉 **OSTATNIE ZMIANY (CURRENT SESSION)**
-
-### ✅ **Hero Section Refactor:**
-- **Modular components** - HeroContent, HeroScrollArrow
-- **Parallax scroll effect** - content moves slower than scroll
-- **Content fade out** - starts at 150px, ends at 600px scroll
-- **CTA button** - scrolls to contact section
-- **58% code reduction** - from 84 to 35 lines
-
-### ✅ **Header Enhancements:**
-- **Transparency effect** - transparent → white with backdrop blur
-- **Logo animation** - "ŁukaszNowakDev" → "ŁN" on scroll
-- **Hide/show animation** - based on scroll direction
-- **Navigation improvements** - smart scroll handling
-
-### ✅ **Navigation Improvements:**
-- **Smart scroll handling** - home goes to top, others to sections
-- **Elegant hover effects** - underline animation
-- **Mobile fullscreen menu** - slide down with staggered animations
-- **Language toggle** - improved styling
-
-### ✅ **Technical Fixes:**
-- **Z-index hierarchy** - proper layering (Hero → About)
-- **About section background** - forced white background
-- **Scroll event optimization** - passive listeners
-- **Component architecture** - better separation of concerns
-
-**Next priorities:** Projects cards height, Skills carousel drag, Mobile optimizations

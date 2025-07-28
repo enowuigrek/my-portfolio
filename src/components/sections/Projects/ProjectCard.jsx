@@ -11,7 +11,7 @@ function ProjectCard({ project, index, isVisible }) {
             className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 scale-in stagger-delay-${(index % 4) + 1} ${isVisible ? 'visible' : ''}`}
         >
             {/* Project Image */}
-            <div className="h-40 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+            <div className="h-24 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
                 <span className="text-white text-xl font-bold">{project.title}</span>
             </div>
 
