@@ -1,13 +1,10 @@
-import { getSoftSkills } from '../../../data/skills'
+import { softSkills } from '../../../data/skills'
 import { useLanguage } from '../../../contexts/LanguageContext'
 import { translations } from '../../../data/translations'
 
 function SoftSkills({ isVisible }) {
     const { language } = useLanguage()
     const t = translations[language]
-
-    // Get soft skills with translations
-    const softSkills = getSoftSkills(language, translations)
 
     return (
         <div className={`mt-20 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8 fade-in-up ${isVisible ? 'visible' : ''}`}>

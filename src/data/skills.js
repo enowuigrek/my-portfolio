@@ -1,10 +1,19 @@
 import {
-    Zap, Code, Palette, Wind, Brush,
-    GitBranch, Figma, Monitor, Flame, Package,
-    Route, RotateCcw, Triangle, Paintbrush, Search, Archive,
-    Bot, Brain, Braces, MessageSquare, Sparkles, Link, Database,
     Puzzle, Users, Target, BookOpen, Eye, Settings
 } from 'lucide-react'
+
+// Importy brand ikon z react-icons - TYLKO SPRAWDZONE IKONY
+import {
+    FaReact, FaHtml5, FaCss3Alt, FaGitAlt, FaFigma, FaSass,
+    FaNodeJs, FaCode
+} from 'react-icons/fa'
+import {
+    SiJavascript, SiTailwindcss, SiVite, SiFirebase, SiWebpack,
+    SiRedux, SiNextdotjs, SiStyledcomponents, SiReactquery,
+    SiOpenai, SiTypescript
+} from 'react-icons/si'
+import { DiReact } from 'react-icons/di'
+import { TbBrain, TbMessageChatbot, TbSparkles, TbDatabase, TbLink } from 'react-icons/tb'
 
 // Function to get skill categories with translations
 export const getSkillCategories = (language, translations) => {
@@ -18,33 +27,33 @@ export const getSkillCategories = (language, translations) => {
             color: "blue",
             skills: [
                 {
-                    name: "JavaScript ES6+",
-                    icon: Braces,
+                    name: "JavaScript",
+                    icon: SiJavascript,
                     experience: t.skillsDaily
                 },
                 {
                     name: "React",
-                    icon: Code,
+                    icon: FaReact,
                     experience: t.skillsYearsPlus
                 },
                 {
                     name: "HTML5",
-                    icon: Code,
+                    icon: FaHtml5,
                     experience: t.skillsAdvanced
                 },
                 {
                     name: "CSS3",
-                    icon: Palette,
+                    icon: FaCss3Alt,
                     experience: t.skillsAdvanced
                 },
                 {
-                    name: "Tailwind CSS",
-                    icon: Wind,
+                    name: "TailwindCSS",
+                    icon: SiTailwindcss,
                     experience: t.skillsPreferred
                 },
                 {
-                    name: "Sass/SCSS",
-                    icon: Brush,
+                    name: "Sass",
+                    icon: FaSass,
                     experience: t.skillsComfortable
                 }
             ]
@@ -56,33 +65,33 @@ export const getSkillCategories = (language, translations) => {
             color: "green",
             skills: [
                 {
-                    name: "Git & GitHub",
-                    icon: GitBranch,
+                    name: "Git",
+                    icon: FaGitAlt,
                     experience: t.skillsDaily
                 },
                 {
                     name: "Vite",
-                    icon: Zap,
+                    icon: SiVite,
                     experience: t.skillsPreferred
                 },
                 {
                     name: "Figma",
-                    icon: Figma,
+                    icon: FaFigma,
                     experience: t.skillsDesign
                 },
                 {
-                    name: "VS Code / WebStorm",
-                    icon: Monitor,
+                    name: "VS Code",
+                    icon: FaCode,
                     experience: t.skillsIDE
                 },
                 {
                     name: "Firebase",
-                    icon: Flame,
+                    icon: SiFirebase,
                     experience: t.skillsBackend
                 },
                 {
                     name: "Webpack",
-                    icon: Package,
+                    icon: SiWebpack,
                     experience: t.skillsBasics
                 }
             ]
@@ -95,32 +104,32 @@ export const getSkillCategories = (language, translations) => {
             skills: [
                 {
                     name: "React Router",
-                    icon: Route,
+                    icon: DiReact,
                     experience: t.skillsSPA
                 },
                 {
                     name: "Redux",
-                    icon: RotateCcw,
+                    icon: SiRedux,
                     experience: t.skillsStateManagement
                 },
                 {
                     name: "Next.js",
-                    icon: Triangle,
+                    icon: SiNextdotjs,
                     experience: t.skillsLearning
                 },
                 {
                     name: "Styled Components",
-                    icon: Paintbrush,
+                    icon: SiStyledcomponents,
                     experience: t.skillsCSSinJS
                 },
                 {
                     name: "React Query",
-                    icon: Search,
+                    icon: SiReactquery,
                     experience: t.skillsDataFetching
                 },
                 {
-                    name: "Local Storage",
-                    icon: Archive,
+                    name: "TypeScript",
+                    icon: SiTypescript,
                     experience: t.skillsBasics
                 }
             ]
@@ -133,32 +142,32 @@ export const getSkillCategories = (language, translations) => {
             skills: [
                 {
                     name: "OpenAI API",
-                    icon: Bot,
+                    icon: SiOpenai,
                     experience: t.skillsExperimenting
                 },
                 {
                     name: "AI Agents",
-                    icon: Brain,
+                    icon: TbBrain,
                     experience: t.skillsOwnBots
                 },
                 {
                     name: "Prompt Engineering",
-                    icon: MessageSquare,
+                    icon: TbMessageChatbot,
                     experience: t.skillsAdvanced
                 },
                 {
                     name: "Claude API",
-                    icon: Sparkles,
+                    icon: TbSparkles,
                     experience: t.skillsIntegrations
                 },
                 {
                     name: "Langchain",
-                    icon: Link,
+                    icon: TbLink,
                     experience: t.skillsBasics
                 },
                 {
                     name: "Vector Databases",
-                    icon: Database,
+                    icon: TbDatabase,
                     experience: t.skillsExperimenting
                 }
             ]
@@ -166,63 +175,14 @@ export const getSkillCategories = (language, translations) => {
     ]
 }
 
-// Keep original export for backward compatibility
-export const skillCategories = [
-    {
-        id: 'frontend',
-        title: "Frontend & Core",
-        description: "Technologie które używam codziennie",
-        color: "blue",
-        skills: [
-            { name: "JavaScript ES6+", icon: Braces, experience: "Codziennie" },
-            { name: "React", icon: Code, experience: "2+ lata" },
-            { name: "HTML5", icon: Code, experience: "Zaawansowany" },
-            { name: "CSS3", icon: Palette, experience: "Zaawansowany" },
-            { name: "Tailwind CSS", icon: Wind, experience: "Preferowane" },
-            { name: "Sass/SCSS", icon: Brush, experience: "Komfortowo" }
-        ]
-    },
-    {
-        id: 'tools',
-        title: "Narzędzia & Workflow",
-        description: "Moje codzienne narzędzia pracy",
-        color: "green",
-        skills: [
-            { name: "Git & GitHub", icon: GitBranch, experience: "Codziennie" },
-            { name: "Vite", icon: Zap, experience: "Preferowane" },
-            { name: "Figma", icon: Figma, experience: "Design" },
-            { name: "VS Code / WebStorm", icon: Monitor, experience: "IDE" },
-            { name: "Firebase", icon: Flame, experience: "Backend" },
-            { name: "Webpack", icon: Package, experience: "Podstawy" }
-        ]
-    },
-    {
-        id: 'react',
-        title: "React Ecosystem",
-        description: "Rozszerzone możliwości React",
-        color: "purple",
-        skills: [
-            { name: "React Router", icon: Route, experience: "SPA routing" },
-            { name: "Redux", icon: RotateCcw, experience: "State management" },
-            { name: "Next.js", icon: Triangle, experience: "Uczę się" },
-            { name: "Styled Components", icon: Paintbrush, experience: "CSS-in-JS" },
-            { name: "React Query", icon: Search, experience: "Data fetching" },
-            { name: "Local Storage", icon: Archive, experience: "Podstawy" }
-        ]
-    },
-    {
-        id: 'ai',
-        title: "AI & Emerging Tech",
-        description: "Eksperymentuję i implementuję w projektach",
-        color: "orange",
-        skills: [
-            { name: "OpenAI API", icon: Bot, experience: "Eksperymentuje" },
-            { name: "AI Agents", icon: Brain, experience: "Własne boty" },
-            { name: "Prompt Engineering", icon: MessageSquare, experience: "Zaawansowany" },
-            { name: "Claude API", icon: Sparkles, experience: "Integracje" },
-            { name: "Vector Databases", icon: Database, experience: "Eksperymentuję" }
-        ]
-    }
+// Static soft skills array
+export const softSkills = [
+    { name: "Rozwiązywanie problemów", icon: Puzzle, description: "10+ lat doświadczenia biznesowego" },
+    { name: "Komunikacja z klientem", icon: Users, description: "Jasne tłumaczenie technicznych rozwiązań" },
+    { name: "Myślenie strategiczne", icon: Target, description: "CliftonStrengths: Strateg" },
+    { name: "Ciągła nauka", icon: BookOpen, description: "CliftonStrengths: Uczenie się" },
+    { name: "Analityczne podejście", icon: Eye, description: "CliftonStrengths: Intelekt" },
+    { name: "Organizacja pracy", icon: Settings, description: "CliftonStrengths: Organizator" }
 ]
 
 // Function to get soft skills with translations
@@ -263,11 +223,61 @@ export const getSoftSkills = (language, translations) => {
     ]
 }
 
-export const softSkills = [
-    { name: "Rozwiązywanie problemów", icon: Puzzle, description: "10+ lat doświadczenia biznesowego" },
-    { name: "Komunikacja z klientem", icon: Users, description: "Jasne tłumaczenie technicznych rozwiązań" },
-    { name: "Myślenie strategiczne", icon: Target, description: "CliftonStrengths: Strateg" },
-    { name: "Ciągła nauka", icon: BookOpen, description: "CliftonStrengths: Uczenie się" },
-    { name: "Analityczne podejście", icon: Eye, description: "CliftonStrengths: Intelekt" },
-    { name: "Organizacja pracy", icon: Settings, description: "CliftonStrengths: Organizator" }
+// Keep original export for backward compatibility
+export const skillCategories = [
+    {
+        id: 'frontend',
+        title: "Frontend & Core",
+        description: "Technologie które używam codziennie",
+        color: "blue",
+        skills: [
+            { name: "JavaScript", icon: SiJavascript, experience: "Codziennie" },
+            { name: "React", icon: FaReact, experience: "2+ lata" },
+            { name: "HTML5", icon: FaHtml5, experience: "Zaawansowany" },
+            { name: "CSS3", icon: FaCss3Alt, experience: "Zaawansowany" },
+            { name: "TailwindCSS", icon: SiTailwindcss, experience: "Preferowane" },
+            { name: "Sass", icon: FaSass, experience: "Komfortowo" }
+        ]
+    },
+    {
+        id: 'tools',
+        title: "Narzędzia & Workflow",
+        description: "Moje codzienne narzędzia pracy",
+        color: "green",
+        skills: [
+            { name: "Git", icon: FaGitAlt, experience: "Codziennie" },
+            { name: "Vite", icon: SiVite, experience: "Preferowane" },
+            { name: "Figma", icon: FaFigma, experience: "Design" },
+            { name: "VS Code", icon: FaCode, experience: "IDE" },
+            { name: "Firebase", icon: SiFirebase, experience: "Backend" },
+            { name: "Webpack", icon: SiWebpack, experience: "Podstawy" }
+        ]
+    },
+    {
+        id: 'react',
+        title: "React Ecosystem",
+        description: "Rozszerzone możliwości React",
+        color: "purple",
+        skills: [
+            { name: "React Router", icon: DiReact, experience: "SPA routing" },
+            { name: "Redux", icon: SiRedux, experience: "State management" },
+            { name: "Next.js", icon: SiNextdotjs, experience: "Uczę się" },
+            { name: "Styled Components", icon: SiStyledcomponents, experience: "CSS-in-JS" },
+            { name: "React Query", icon: SiReactquery, experience: "Data fetching" },
+            { name: "TypeScript", icon: SiTypescript, experience: "Podstawy" }
+        ]
+    },
+    {
+        id: 'ai',
+        title: "AI & Emerging Tech",
+        description: "Eksperymentuję i implementuję w projektach",
+        color: "orange",
+        skills: [
+            { name: "OpenAI API", icon: SiOpenai, experience: "Eksperymentuje" },
+            { name: "AI Agents", icon: TbBrain, experience: "Własne boty" },
+            { name: "Prompt Engineering", icon: TbMessageChatbot, experience: "Zaawansowany" },
+            { name: "Claude API", icon: TbSparkles, experience: "Integracje" },
+            { name: "Node.js", icon: FaNodeJs, experience: "Backend" }
+        ]
+    }
 ]
