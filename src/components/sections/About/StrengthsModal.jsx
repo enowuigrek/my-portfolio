@@ -1,5 +1,5 @@
-import { Brain, Lightbulb, Target, Users, Settings } from 'lucide-react'
 import Modal from '../../ui/Modal'
+import StrengthCard from './StrengthCard'
 import { useLanguage } from '../../../contexts/LanguageContext'
 import { translations } from '../../../data/translations'
 
@@ -110,17 +110,6 @@ function StrengthsModal({ isOpen, onClose }) {
         }
     ]
 
-    const getStrengthIcon = (id) => {
-        switch(id) {
-            case 1: return <Brain className="w-6 h-6" />
-            case 2: return <Lightbulb className="w-6 h-6" />
-            case 3: return <Target className="w-6 h-6" />
-            case 4: return <Users className="w-6 h-6" />
-            case 5: return <Settings className="w-6 h-6" />
-            default: return <Brain className="w-6 h-6" />
-        }
-    }
-
     const modalTitle = language === 'pl'
         ? "Moje wyniki CliftonStrengths® Assessment"
         : "My CliftonStrengths® Assessment Results"
@@ -132,6 +121,7 @@ function StrengthsModal({ isOpen, onClose }) {
             title={modalTitle}
         >
             <div className="space-y-6">
+                {/* Header Info */}
                 <div className="bg-blue-50 p-4 rounded-lg">
                     <p className="text-sm text-blue-800 mb-2">
                         <strong>CliftonStrengths®</strong> {language === 'pl'
@@ -148,40 +138,17 @@ function StrengthsModal({ isOpen, onClose }) {
                     </p>
                 </div>
 
+                {/* Strength Cards */}
                 {strengthsData.map((strength, index) => (
-                    <div key={strength.id} className="border-l-4 border-blue-500 pl-4">
-                        <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center">
-                                <div className="text-blue-600 mr-2">
-                                    {getStrengthIcon(strength.id)}
-                                </div>
-                                <h4 className="font-bold text-gray-800">
-                                    {index + 1}. {strength.name}
-                                </h4>
-                            </div>
-                            <span className="text-xs bg-gray-100 px-2 py-1 rounded">
-                                {strength.domain}
-                            </span>
-                        </div>
-                        <p className="text-gray-600 text-sm mb-3 italic">
-                            "{strength.description}"
-                        </p>
-                        <div className="space-y-1">
-                            <p className="text-xs font-medium text-gray-700">
-                                {language === 'pl' ? 'Jak to wykorzystuję w pracy:' : 'How I use this at work:'}
-                            </p>
-                            <ul className="text-xs text-gray-600 space-y-1">
-                                {strength.keyPoints.map((point, idx) => (
-                                    <li key={idx} className="flex items-start">
-                                        <span className="text-blue-500 mr-2">•</span>
-                                        {point}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
+                    <StrengthCard
+                        key={strength.id}
+                        strength={strength}
+                        index={index}
+                        language={language}
+                    />
                 ))}
 
+                {/* Footer */}
                 <div className="bg-gray-50 p-4 rounded-lg text-center">
                     <p className="text-xs text-gray-600 mb-2">
                         {language === 'pl'
